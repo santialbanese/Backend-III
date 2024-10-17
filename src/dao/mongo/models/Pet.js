@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const collection = 'Pets';
+const collection = "Pets";
 
 const schema = new mongoose.Schema({
     name:{
@@ -18,10 +18,10 @@ const schema = new mongoose.Schema({
     },
     owner:{
         type:mongoose.SchemaTypes.ObjectId,
-        ref:'Users'
+        ref:"Users"
     },
     image:String
-})
+});
 
 const petModel = mongoose.model(collection,schema);
 

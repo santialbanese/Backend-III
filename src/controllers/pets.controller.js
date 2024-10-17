@@ -1,52 +1,78 @@
-import PetDTO from "../dto/Pet.dto.js";
-import { petsService } from "../services/index.js"
-import __dirname from "../utils/index.js";
+import { ERROR_INVALID_ID, ERROR_NOT_FOUND_ID } from "../constant/message.constant.js";
+import { generatePetsMock } from "../mocks/pet.mock.js";
+//import { customError } from "../errors/custom.error.js";
+import PetService from "../services/pets.service.js";
 
-const getAllPets = async(req,res)=>{
-    const pets = await petsService.getAll();
-    res.send({status:"success",payload:pets})
-}
+export default class PetController{
+    #petService;
 
-const createPet = async(req,res)=> {
-    const {name,specie,birthDate} = req.body;
-    if(!name||!specie||!birthDate) return res.status(400).send({status:"error",error:"Incomplete values"})
-    const pet = PetDTO.getPetInputFrom({name,specie,birthDate});
-    const result = await petsService.create(pet);
-    res.send({status:"success",payload:result})
-}
+    constructor(){
+        this.#petService = new PetService();
+    }
 
-const updatePet = async(req,res) =>{
-    const petUpdateBody = req.body;
-    const petId = req.params.pid;
-    const result = await petsService.update(petId,petUpdateBody);
-    res.send({status:"success",message:"pet updated"})
-}
 
-const deletePet = async(req,res)=> {
-    const petId = req.params.pid;
-    const result = await petsService.delete(petId);
-    res.send({status:"success",message:"pet deleted"});
-}
+    async getAllPets(req,res, next){
+        try {
+            const pets = await this.#petService.findAll(req.query);
+            res.send({status:"success",payload:pets});
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async getPet (req, res, next) {
+        try {
+            const pet = await this.#petService.findOneById(req.params.pid);
+    
+            res.send({status: "success", payload: pet});
+    
+        } catch (error) {
+            if (error.message === ERROR_INVALID_ID) {
+                return res.status(400).send({ status: "error", error: "ID inválido" });
+            }
+            if (error.message === ERROR_NOT_FOUND_ID) {
+                return res.status(404).send({ status: "error", error: "Usuario no encontrado" });
+            }
+            next(error);
+        }
+    }
 
-const createPetWithImage = async(req,res) =>{
-    const file = req.file;
-    const {name,specie,birthDate} = req.body;
-    if(!name||!specie||!birthDate) return res.status(400).send({status:"error",error:"Incomplete values"})
-    console.log(file);
-    const pet = PetDTO.getPetInputFrom({
-        name,
-        specie,
-        birthDate,
-        image:`${__dirname}/../public/img/${file.filename}`
-    });
-    console.log(pet);
-    const result = await petsService.create(pet);
-    res.send({status:"success",payload:result})
-}
-export default {
-    getAllPets,
-    createPet,
-    updatePet,
-    deletePet,
-    createPetWithImage
+    async createPet(req, res, next){
+        try {
+            const pet = await this.#petService.insertOne(req.body);
+            res.send({status:"success",payload:pet});
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async createManyPets(req, res, next, count){
+        try {
+            if(!count) count = 1;
+            const pets = generatePetsMock(Number(count));
+            const response = await this.#petService.insertMany(pets);
+            return response;
+            //res.send({ status:"success", payload:response });
+        } catch (error) { 
+            next(error);
+        }
+    }
+    
+    async updatePet (req,res, next){
+        try {
+            const pet = await this.#petService.updateOne(req.params.pid, req.body);
+            res.send({status:"success",payload:pet});
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async deletePet (req,res, next){
+        try {
+            await this.#petService.deleteOneById(req.params.pid);
+            res.send({status:"success",message:"pet deleted"});
+        } catch (error) {
+            next(error);
+        }
+    }
 }

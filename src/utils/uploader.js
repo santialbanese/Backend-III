@@ -1,4 +1,4 @@
-import __dirname from "./index.js";
+/* import __dirname from "./security.js";
 import multer from 'multer';
 
 const storage = multer.diskStorage({
@@ -12,4 +12,4 @@ const storage = multer.diskStorage({
 
 const uploader = multer({storage})
 
-export default uploader;
+export default uploader; */
