@@ -10,7 +10,8 @@ connectDB();
 import UsersRouter from "./routes/users.router.js"; 
 import PetRouter from "./routes/pets.router.js"; 
 import MockRouter from "./routes/mock.router.js"; 
-import SessionRouter from "./routes/sessions.router.js"; 
+import SessionRouter from "./routes/sessions.router.js";
+import AdoptionRouter from "./routes/adoption.router.js";
 import { errorHandle } from "./errors/err.Handle.js";
 import { logger } from "./utils/logger.js";
 
@@ -24,9 +25,11 @@ server.use("/api/users", UsersRouter);
 server.use("/api/pets", PetRouter);  
 server.use("/api/mocks", MockRouter);  
 server.use("/api/sessions", SessionRouter);  
+server.use("/api/adoptions", AdoptionRouter);  
 server.use(errorHandle);
 
 
 server.listen(process.env.PORT, () => { 
     logger.info(`Ejecutándose en http://localhost:${process.env.PORT}`);
 });
+ 
