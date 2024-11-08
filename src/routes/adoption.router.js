@@ -7,4 +7,4 @@ router.get("/", (req, res, next) => adoptionController.getAllAdoptions(req, res,
 router.get("/:aid", (req, res, next) => adoptionController.getAdoption(req, res, next));
 router.post("/:uid/:pid", (req, res, next) => adoptionController.createAdoption(req, res, next));
 
-export default router;
+export default router; 

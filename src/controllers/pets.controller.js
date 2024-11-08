@@ -39,7 +39,8 @@ export default class PetController{
 
     async createPet(req, res, next){
         try {
-            const pet = await this.#petService.insertOne(req.body);
+            const { name, specie, birthDate, image } = req.body;
+            const pet = await this.#petService.insertOne({name, specie, birthDate, image});
             res.send({status:"success",payload:pet});
         } catch (error) {
             next(error);
@@ -58,7 +59,7 @@ export default class PetController{
         }
     }
     
-    async updatePet (req,res, next){
+    async updatePet (req, res, next){
         try {
             const pet = await this.#petService.updateOne(req.params.pid, req.body);
             res.send({status:"success",payload:pet});

@@ -39,7 +39,7 @@ export default class SessionController {
             const validPassword = isValidPassword(password, userEmail.password);
             if (!validPassword) return res.status(400).send({ status: "error", error: "Incorrect password" });
             const token = jwt.sign({ id: userEmail._id, email: userEmail.email }, "tokenSecretJWT", { expiresIn: "1h" });
-            res.cookie("coderCookie", token, { maxAge: 3600000 }).send({ status: "success", message: "Logged in" });
+            res.cookie("coderCookie", token, { maxAge: 3600000, httpOnly: true }).send({ status: "success", message: "Logged in" });
             
         } catch (error) {
             next(error);
@@ -67,7 +67,7 @@ export default class SessionController {
             const ValidPassword = isValidPassword(user, password);
             if (!ValidPassword) return res.status(400).send({ status: "error", error: "Incorrect password" });
             const token = jwt.sign(user, "tokenSecretJWT", { expiresIn: "1h" });
-            res.cookie("unprotectedCookie", token, { maxAge: 3600000 }).send({ status: "success", message: "Unprotected Logged in" });
+            res.cookie("unprotectedCookie", token, { maxAge: 3600000, httpOnly: true  }).send({ status: "success", message: "Unprotected Logged in" });
         } catch (error) {
             next(error);
         }

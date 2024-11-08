@@ -23,11 +23,7 @@ export default class MongoDAO{
     };
 
     async update(id,doc){
-        return await this.#model.findByIdAndUpdate(
-            { _id: id },
-            { $set: doc },
-            { new: true, runValidators: true } 
-        );
+        return await this.#model.findByIdAndUpdate({ _id: id },{ $set: doc },{ new: true, runValidators: true });
     };
 
     async delete(id){
