@@ -9,3 +9,22 @@
 2024-10-17 12:50:33 [[31merror[39m]: Cannot read properties of undefined (reading 'fullname')
 2024-10-17 12:59:13 [[31merror[39m]: Expected "payload" to be a plain object.
 2024-10-23 20:37:58 [[31merror[39m]: Not found
+2024-11-09 12:00:57 [[31merror[39m]: Pets validation failed: name: Path `name` is required., specie: Path `specie` is required.
+2024-11-09 15:52:10 [[31merror[39m]: Not found
+2024-11-09 15:52:10 [[31merror[39m]: Not found
+2024-11-09 15:53:52 [[31merror[39m]: Not found
+2024-11-09 15:54:39 [[31merror[39m]: Not found
+2024-11-09 15:54:39 [[31merror[39m]: Not found
+2024-11-09 17:41:42 [[31merror[39m]: ID inválido
+2024-11-09 17:41:42 [[31merror[39m]: ID inválido
+2024-11-09 17:43:17 [[31merror[39m]: ID inválido
+2024-11-09 17:43:17 [[31merror[39m]: ID inválido
+2024-11-09 17:43:51 [[31merror[39m]: ID inválido
+2024-11-09 17:43:51 [[31merror[39m]: ID inválido
+2024-11-10 17:33:21 [[31merror[39m]: ID inválido
+2024-11-10 17:33:21 [[31merror[39m]: ID inválido
+2024-11-10 17:37:08 [[31merror[39m]: ID inválido
+2024-11-10 17:37:08 [[31merror[39m]: ID inválido
+2024-11-10 17:43:26 [[31merror[39m]: ID inválido
+2024-11-10 17:43:26 [[31merror[39m]: ID inválido
+2024-11-15 10:52:24 [[31merror[39m]: Users validation failed: first_name: Path `first_name` is required., last_name: Path `last_name` is required.

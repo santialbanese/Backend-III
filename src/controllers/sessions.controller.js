@@ -22,7 +22,7 @@ export default class SessionController {
                 password: hashedPassword
             };
             let result = await this.#userService.getUserEmail(user);
-            res.send({ status: "success", payload: result._id });
+            res.status(201).json({ status: "success", payload: result });
         } catch (error) {
             next(error);
         }

@@ -17,7 +17,7 @@ export default class UserController{
             res.send({status:"success",payload:users});
         } catch (error) {
             next(error);
-        }
+        } 
     }
     
     async getUser (req, res, next) {

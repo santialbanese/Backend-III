@@ -14,7 +14,7 @@ export default class PetController{
     async getAllPets(req,res, next){
         try {
             const pets = await this.#petService.findAll(req.query);
-            res.send({status:"success",payload:pets});
+            res.status(200).json({status:"success",payload:pets});
         } catch (error) {
             next(error);
         }
@@ -41,7 +41,7 @@ export default class PetController{
         try {
             const { name, specie, birthDate, image } = req.body;
             const pet = await this.#petService.insertOne({name, specie, birthDate, image});
-            res.send({status:"success",payload:pet});
+            res.status(201).json({status:"success",payload:pet});
         } catch (error) {
             next(error);
         }
@@ -62,7 +62,7 @@ export default class PetController{
     async updatePet (req, res, next){
         try {
             const pet = await this.#petService.updateOne(req.params.pid, req.body);
-            res.send({status:"success",payload:pet});
+            res.status(200).json({status:"success",payload:pet});
         } catch (error) {
             next(error);
         }
@@ -71,7 +71,7 @@ export default class PetController{
     async deletePet (req,res, next){
         try {
             await this.#petService.deleteOneById(req.params.pid);
-            res.send({status:"success",message:"pet deleted"});
+            res.status(200).json({status:"success",message:"pet deleted"});
         } catch (error) {
             next(error);
         }
