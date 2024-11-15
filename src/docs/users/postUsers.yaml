@@ -1,0 +1,22 @@
+paths:
+  /api/users:
+    post:
+      summary: Crear un nuevo usuario
+      description: Agregar un usuario a la base de datos.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        201:
+          description: Usuario creado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        400:
+          description: Error en los datos enviados.

@@ -2,7 +2,7 @@ import { connect, Types } from "mongoose";
 import { logger } from "../utils/logger.js";
 
 export const connectDB = () => { 
-    const URI = process.env.MONGODB_URI;
+    const URI = process.env.MONGODB_URI || "//localhost:27017/Backend3";
 
     try {
         connect(URI, { dbName: "Backend3" }); 

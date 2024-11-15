@@ -1,0 +1,70 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único del usuario.
+        first_name:
+          type: string
+          description: Nombre del usuario.
+        last_name:
+          type: string
+          description: Apellido del usuario.
+        email:
+          type: string
+          description: Correo electrónico del usuario.
+        password:
+          type: string
+          description: Contraseña del usuario.
+        role:
+          type: string
+        pets:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pet"
+      example:
+        id: "643f27f3e63e2d56f0e6123c"
+        first_name: "Juan"
+        last_name: "Pérez"
+        email: "juan.perez@example.com"
+        password: "hashedpassword123"
+        role: "user"
+        pets:
+          - _id: "643f28f3e63e2d56f0e6123d"
+    UserInput:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+        pets:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pet"
+      required:
+        - first_name
+        - last_name
+        - email
+        - password
+      example:
+        first_name: "Juan"
+        last_name: "Pérez"
+        email: "juan.perez@example.com"
+        password: "hashedpassword123"
+    Pet:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID único de la mascota.
+      example:
+        _id: "643f28f3e63e2d56f0e6123d"

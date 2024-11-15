@@ -128,3 +128,15 @@
 2024-11-15 10:52:24 [[31merror[39m]: Users validation failed: first_name: Path `first_name` is required., last_name: Path `last_name` is required.
 2024-11-15 10:52:25 [[32minfo[39m]: Conectado a MongoDB
 2024-11-15 10:52:25 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 11:44:09 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 11:44:09 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 12:07:40 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 12:07:40 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 12:15:25 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 12:15:25 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 12:19:56 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 12:19:56 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 12:51:35 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 12:51:35 [[32minfo[39m]: Ejecutándose en http://localhost:8080
+2024-11-15 13:23:09 [[32minfo[39m]: Conectado a MongoDB
+2024-11-15 13:23:09 [[32minfo[39m]: Ejecutándose en http://localhost:8080

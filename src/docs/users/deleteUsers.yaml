@@ -1,0 +1,19 @@
+paths:
+  /api/users/{id}:
+    delete:
+      summary: Eliminar un usuario
+      description: Elimina un usuario de la base de datos.
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID del usuario
+      responses:
+        200:
+          description: Usuario eliminado exitosamente.
+        404:
+          description: Usuario no encontrado.

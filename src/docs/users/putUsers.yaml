@@ -1,0 +1,31 @@
+paths:
+  /api/users/{id}:
+    put:
+      summary: Actualizar un usuario
+      description: Actualizar los datos de un usuario específico.
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID del usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        200:
+          description: Usuario actualizado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        404:
+          description: Usuario no encontrado.
+        400:
+          description: Error en los datos enviados.

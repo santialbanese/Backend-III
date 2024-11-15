@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
         type: String,
         required:true
     },
-    last_name:{
+    last_name:{ 
         type:String,
         required:true
     },

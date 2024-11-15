@@ -14,6 +14,8 @@ import SessionRouter from "./routes/sessions.router.js";
 import AdoptionRouter from "./routes/adoption.router.js";
 import { errorHandle } from "./errors/err.Handle.js";
 import { logger } from "./utils/logger.js";
+import swaggerUiExpress from "swagger-ui-express";
+import { specs } from "./config/swagger.config.js";
 
 const server = express();
 
@@ -26,6 +28,7 @@ server.use("/api/pets", PetRouter);
 server.use("/api/mocks", MockRouter);  
 server.use("/api/sessions", SessionRouter);  
 server.use("/api/adoptions", AdoptionRouter);  
+server.use("/api-docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 server.use(errorHandle);
 
 
