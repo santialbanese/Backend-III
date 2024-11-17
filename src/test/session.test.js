@@ -17,24 +17,23 @@ describe("Test Sessions: ", () => {
     };
 
     const { status, body } = await request.post("/register").send(newUser);
+    
     userTest = body.payload;
     expect(status).to.be.equal(201);
     expect(body.status).to.be.equal("success");
     expect(body.payload).to.be.an("object");
     expect(body.payload.email).to.be.equal(newUser.email);
     expect(body.payload.fullName).to.be.equal(`${newUser.first_name} ${newUser.last_name}`);
-    /* expect(body.payload.first_name).to.be.equal(newUser.first_name);
-    expect(body.payload.last_name).to.be.equal(newUser.last_name); */
     expect(body.payload.password).to.not.be.equal(newUser.password);
   });
 
-  it("[POST] /api/sessions/login - Debe loguear un usuario", async () => {
+  it("[GET] /api/sessions/login - Debe loguear un usuario", async () => {
     const data = {
       email: "pepe@gmail.com",
       password: "123",
     };
 
-    const { status, body } = await request.post("/login").send(data);
+    const { status, body } = await request.get("/login").send(data);
 
     expect(status).to.be.equal(200);
     expect(body.status).to.be.equal("success");

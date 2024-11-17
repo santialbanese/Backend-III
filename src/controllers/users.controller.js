@@ -40,7 +40,7 @@ export default class UserController{
     async createUser(req, res, next){
         try {
             const user = await this.#userService.insertOne(req.body);
-            res.send({status:"success",payload:user});
+            res.status(201).json({status:"success",payload:user});
         } catch (error) {
             next(error);
         }

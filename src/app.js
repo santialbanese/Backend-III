@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { config as dotenvConfig } from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
