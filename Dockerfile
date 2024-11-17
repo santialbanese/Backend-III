@@ -26,7 +26,7 @@ CMD ["npm", "start"]
 
 # Una vez que la imagen se haya construido, podemos correr un contenedor a partir de ella
 # Para esto, debemos ejecutar el siguiente comando en la terminal:
-# docker run -p 8080:8080 nombre-de-la-imagen (reemplazar nombre-de-la-imagen por el nombre que le diste a tu imagen)
+# ba (reemplazar nombre-de-la-imagen por el nombre que le diste a tu imagen)
 
 # Loguearse con la cuenta de docker desde la consola
 # docker login

@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 // Crea un hash de una contraseña proporcionada
 export const createHash = (password) => {
@@ -8,6 +8,6 @@ export const createHash = (password) => {
 };
 
 // Verifica si una contraseña proporcionada es válida para un usuario
-export const isValidPassword = (password, hash) => {
-    return bcrypt.compareSync(String(password), hash);
+export function isValidPassword(password, hashedPassword) {
+    return bcrypt.compare(password, hashedPassword);
 };

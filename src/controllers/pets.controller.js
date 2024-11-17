@@ -47,7 +47,7 @@ export default class PetController{
         }
     }
 
-    async createManyPets(req, res, next, count){
+    async createManyPets(req, res, next, count){ 
         try {
             if(!count) count = 1;
             const pets = generatePetsMock(Number(count));
@@ -61,8 +61,8 @@ export default class PetController{
     
     async updatePet (req, res, next){
         try {
-            const pet = await this.#petService.updateOne(req.params.pid, req.body);
-            res.status(200).json({status:"success",payload:pet});
+            const newPet = await this.#petService.updateOne(req.params.pid, req.body);
+            res.status(200).json({status:"success",payload: newPet});
         } catch (error) {
             next(error);
         }
